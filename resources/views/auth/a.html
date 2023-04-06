@@ -1,0 +1,41 @@
+<td class="client_name">
+    @if(strlen($job->job_description) > 50)
+    <p title="{{$job->job_description}}">{{substr($job->job_description,0,50)}}</p>
+    <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
+    <span class="read-more-content"> {!!substr($job->job_description,50,strlen($job->job_description))!!}
+    <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
+     @else
+    {!!$job->job_description!!}
+    @endif
+</td>
+
+<td class="client_name">
+    @if(strlen($job->responsibility) > 50)
+    <p title="{!!$job->responsibility!!}">{!!substr($job->responsibility,0,50)!!}</p>
+    <span class="read-more-show hide_content">More<i class="fa fa-angle-down"></i></span>
+    <span class="read-more-content"> {!!substr($job->responsibility,50,strlen($job->responsibility))!!}
+    <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
+     @else
+    {!!$job->responsibility!!}
+    @endif
+</td>
+<script type="text/javascript">
+// Hide the extra content initially:
+$('.read-more-content').addClass('hide_content')
+$('.read-more-show, .read-more-hide').removeClass('hide_content')
+
+// Set up the toggle effect:
+$('.read-more-show').on('click', function(e) {
+$(this).next('.read-more-content').removeClass('hide_content');
+$(this).addClass('hide_content');
+e.preventDefault();
+});
+$('.read-more-hide').on('click', function(e) {
+var p = $(this).parent('.read-more-content');
+p.addClass('hide_content');
+p.prev('.read-more-show').removeClass('hide_content');
+e.preventDefault();
+});
+</script>
+
+
